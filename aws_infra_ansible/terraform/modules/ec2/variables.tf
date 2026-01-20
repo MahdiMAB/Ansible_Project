@@ -9,3 +9,8 @@ variable "key_name" {
 variable "security_group_id" {
   type = string
 }
+
+variable "subnet_id" {
+  description = "ID of the subnet where EC2 instances will be launched"
+  type        = string
+}
