@@ -1,18 +1,19 @@
-# Création de la clé SSH
+# Création de la paire de clés SSH
 resource "aws_key_pair" "ansible" {
   key_name   = var.key_pair_name
   public_key = file(var.public_key_path)
 }
 
-# Module réseau
+# Module networking (VPC, Subnet, Internet Gateway, Route Table)
 module "networking" {
-  source     = "./modules/networking"
-  aws_region = var.aws_region
+  source = "./modules/networking"
 }
 
 # Module Security Group
+# Module Security Group
 module "security_group" {
   source = "./modules/security_group"
+  vpc_id = module.networking.vpc_id
 }
 
 # Module EC2

@@ -1,0 +1,16 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install Kubernetes packages from Ubuntu repository
+  apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
+    state: present
+    allow_downgrade: yes
+
+- name: Hold Kubernetes packages to prevent upgrades
+  command: apt-mark hold kubelet kubeadm kubectl
