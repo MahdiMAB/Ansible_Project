@@ -5,3 +5,7 @@ terraform.tfstate*
 .terraform.lock.hcl*
 .aws/
 aws/
+*.pem
+*.key
+*.pub
+~/.ssh/id_ansible
